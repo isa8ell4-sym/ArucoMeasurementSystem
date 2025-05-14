@@ -1,0 +1,1732 @@
+   MainThread:07:29:28.709 mdns_scanner.py                            69 INFO     | Querying mDNS to find _gopro-web._tcp.local....
+   MainThread:07:29:28.789 mdns_scanner.py                            36 DEBUG    | Found MDNS service C3534250225499._gopro-web._tcp.local.
+   MainThread:07:29:28.789 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/control/wired_usb?p=1
+   MainThread:07:29:28.789 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera Control Wired Usb",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/control/wired_usb",
+    "p" : "Toggle.ENABLE",
+<<<<<<<<--------------
+
+   MainThread:07:29:28.804 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:28.820 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/control/wired_usb?p=1 HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:28.861 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:28.905 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:28.905 logger.py                                  74 DEBUG    | header: Content-Length: 3
+   MainThread:07:29:28.905 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/control/wired_usb?p=1 HTTP/1.1" 200 3
+   MainThread:07:29:28.905 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/control/wired_usb?p=1",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+-------------->>>>>>>>
+
+   MainThread:07:29:28.905 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/version
+   MainThread:07:29:28.905 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Version",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/version",
+<<<<<<<<--------------
+
+   MainThread:07:29:28.930 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:28.930 logger.py                                  74 DEBUG    | send: b'GET /gopro/version HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:28.946 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:29.006 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:29.006 logger.py                                  74 DEBUG    | header: Content-Length: 20
+   MainThread:07:29:29.006 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/version HTTP/1.1" 200 20
+   MainThread:07:29:29.006 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/version",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : "2.0",
+-------------->>>>>>>>
+
+   MainThread:07:29:29.006 gopro_wired.py                            110 INFO     | Using Open GoPro API version 2.0
+   MainThread:07:29:29.006 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:29.006 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:29.021 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:29.047 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:29.121 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:29.121 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:29.121 logger.py                                  74 DEBUG    | header: Content-Length: 1574
+   MainThread:07:29:29.121 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1574
+   MainThread:07:29:29.132 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "False",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "False",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "46",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255522504",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "True",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "12",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1000",
+        "StatusId.PRESET" : "0",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "0",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.WIDE_12_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.STANDARD",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.LOW",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_4K_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.WIDESCREEN_16_9_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_16_9",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_16_9",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_30_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:29.221 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:29.221 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:29.221 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:29.237 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:29.263 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:29.263 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:29.263 logger.py                                  74 DEBUG    | header: Content-Length: 1574
+   MainThread:07:29:29.263 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1574
+   MainThread:07:29:29.263 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "False",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "False",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "46",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255522504",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "True",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "12",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1000",
+        "StatusId.PRESET" : "0",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "0",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.WIDE_12_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.STANDARD",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.LOW",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_4K_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.WIDESCREEN_16_9_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_16_9",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_16_9",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_30_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:29.347 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/presets/set_group?id=1001
+   MainThread:07:29:29.347 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera Presets Set Group",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/presets/set_group",
+    "_id" : "1001",
+<<<<<<<<--------------
+
+   MainThread:07:29:29.363 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:29.379 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/presets/set_group?id=1001 HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:29.664 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:29.723 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:29.723 logger.py                                  74 DEBUG    | header: Content-Length: 3
+   MainThread:07:29:29.723 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/presets/set_group?id=1001 HTTP/1.1" 200 3
+   MainThread:07:29:29.723 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/presets/set_group?id=1001",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+-------------->>>>>>>>
+
+   MainThread:07:29:29.723 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:29.723 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:29.738 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:29.754 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:29.807 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:29.807 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:29.807 logger.py                                  74 DEBUG    | header: Content-Length: 1580
+   MainThread:07:29:29.807 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1580
+   MainThread:07:29:29.823 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "False",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "False",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "46",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255522504",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "True",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "16",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1001",
+        "StatusId.PRESET" : "65536",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "0",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.LINEAR_27_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.SUPERPHOTO",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.OFF",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.TRADITIONAL_4_3_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_4_3",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_4_3",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_240_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:29.911 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/media/list
+   MainThread:07:29:29.911 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Media List",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/media/list",
+<<<<<<<<--------------
+
+   MainThread:07:29:29.911 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:29.927 logger.py                                  74 DEBUG    | send: b'GET /gopro/media/list HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:29.958 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:29.958 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:29.958 logger.py                                  74 DEBUG    | header: Content-Length: 3521
+   MainThread:07:29:29.958 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/media/list HTTP/1.1" 200 3521
+   MainThread:07:29:29.958 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/media/list",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "identifier" : "115391177990272899",
+        "media" : [
+            {
+                "directory" : "100GOPRO",
+                "file_system" : [
+                    {
+                        "filename" : "100GOPRO/GP010001.JPG",
+                        "creation_timestamp" : "1742479267",
+                        "modified_time" : "1742479267",
+                    }, {
+                        "filename" : "100GOPRO/GP010002.JPG",
+                        "creation_timestamp" : "1742479400",
+                        "modified_time" : "1742479400",
+                    }, {
+                        "filename" : "100GOPRO/GP010003.JPG",
+                        "creation_timestamp" : "1742479440",
+                        "modified_time" : "1742479440",
+                    }, {
+                        "filename" : "100GOPRO/GP010004.JPG",
+                        "creation_timestamp" : "1742479446",
+                        "modified_time" : "1742479446",
+                    }, {
+                        "filename" : "100GOPRO/GP010005.JPG",
+                        "creation_timestamp" : "1742479469",
+                        "modified_time" : "1742479469",
+                    }, {
+                        "filename" : "100GOPRO/GP010006.JPG",
+                        "creation_timestamp" : "1742479503",
+                        "modified_time" : "1742479503",
+                    }, {
+                        "filename" : "100GOPRO/GP010007.JPG",
+                        "creation_timestamp" : "1742479506",
+                        "modified_time" : "1742479506",
+                    }, {
+                        "filename" : "100GOPRO/GP010008.JPG",
+                        "creation_timestamp" : "1742479514",
+                        "modified_time" : "1742479514",
+                    }, {
+                        "filename" : "100GOPRO/GP010009.JPG",
+                        "creation_timestamp" : "1742479517",
+                        "modified_time" : "1742479517",
+                    }, {
+                        "filename" : "100GOPRO/GP010010.JPG",
+                        "creation_timestamp" : "1742479520",
+                        "modified_time" : "1742479520",
+                    }, {
+                        "filename" : "100GOPRO/GX010011.MP4",
+                        "creation_timestamp" : "1742487980",
+                        "modified_time" : "1742487980",
+                        "low_res_video_size" : "2931666",
+                        "lrv_file_size" : "-1",
+                    }, {
+                        "filename" : "100GOPRO/GP010012.JPG",
+                        "creation_timestamp" : "1742488042",
+                        "modified_time" : "1742488042",
+                    }, {
+                        "filename" : "100GOPRO/GP010013.JPG",
+                        "creation_timestamp" : "1742488047",
+                        "modified_time" : "1742488047",
+                    }, {
+                        "filename" : "100GOPRO/GP010014.JPG",
+                        "creation_timestamp" : "1742488082",
+                        "modified_time" : "1742488082",
+                    }, {
+                        "filename" : "100GOPRO/GP010015.JPG",
+                        "creation_timestamp" : "1742488568",
+                        "modified_time" : "1742488568",
+                    }, {
+                        "filename" : "100GOPRO/GP010016.JPG",
+                        "creation_timestamp" : "1742488571",
+                        "modified_time" : "1742488571",
+                    }, {
+                        "filename" : "100GOPRO/GP010017.JPG",
+                        "creation_timestamp" : "1742488577",
+                        "modified_time" : "1742488577",
+                    }, {
+                        "filename" : "100GOPRO/GP010018.JPG",
+                        "creation_timestamp" : "1742488582",
+                        "modified_time" : "1742488582",
+                    }, {
+                        "filename" : "100GOPRO/GP010019.JPG",
+                        "creation_timestamp" : "1742488585",
+                        "modified_time" : "1742488585",
+                    }, {
+                        "filename" : "100GOPRO/GP010020.JPG",
+                        "creation_timestamp" : "1742488589",
+                        "modified_time" : "1742488589",
+                    }, {
+                        "filename" : "100GOPRO/GP010021.JPG",
+                        "creation_timestamp" : "1742488623",
+                        "modified_time" : "1742488623",
+                    }, {
+                        "filename" : "100GOPRO/GP010022.JPG",
+                        "creation_timestamp" : "1742488633",
+                        "modified_time" : "1742488633",
+                    }, {
+                        "filename" : "100GOPRO/GP010023.JPG",
+                        "creation_timestamp" : "1742488636",
+                        "modified_time" : "1742488636",
+                    }, {
+                        "filename" : "100GOPRO/GP010024.JPG",
+                        "creation_timestamp" : "1742488640",
+                        "modified_time" : "1742488640",
+                    }, {
+                        "filename" : "100GOPRO/GP010025.JPG",
+                        "creation_timestamp" : "1742488645",
+                        "modified_time" : "1742488645",
+                    }, {
+                        "filename" : "100GOPRO/GP010026.JPG",
+                        "creation_timestamp" : "1742488686",
+                        "modified_time" : "1742488686",
+                    }, {
+                        "filename" : "100GOPRO/GP010047.JPG",
+                        "creation_timestamp" : "1742821501",
+                        "modified_time" : "1742821501",
+                    }, {
+                        "filename" : "100GOPRO/GP010048.JPG",
+                        "creation_timestamp" : "1742821504",
+                        "modified_time" : "1742821504",
+                    }, {
+                        "filename" : "100GOPRO/GP010049.JPG",
+                        "creation_timestamp" : "1742821513",
+                        "modified_time" : "1742821513",
+                    }, {
+                        "filename" : "100GOPRO/GP010050.JPG",
+                        "creation_timestamp" : "1742821517",
+                        "modified_time" : "1742821517",
+                    }, {
+                        "filename" : "100GOPRO/GP010051.JPG",
+                        "creation_timestamp" : "1742821520",
+                        "modified_time" : "1742821520",
+                    }, {
+                        "filename" : "100GOPRO/GP010052.JPG",
+                        "creation_timestamp" : "1742821524",
+                        "modified_time" : "1742821524",
+                    }, {
+                        "filename" : "100GOPRO/GP010053.JPG",
+                        "creation_timestamp" : "1742821527",
+                        "modified_time" : "1742821527",
+                    }, {
+                        "filename" : "100GOPRO/GP010054.JPG",
+                        "creation_timestamp" : "1742821560",
+                        "modified_time" : "1742821560",
+                    }, {
+                        "filename" : "100GOPRO/GP010055.JPG",
+                        "creation_timestamp" : "1742821564",
+                        "modified_time" : "1742821564",
+                    }, {
+                        "filename" : "100GOPRO/GP010056.JPG",
+                        "creation_timestamp" : "1742821568",
+                        "modified_time" : "1742821568",
+                    }, {
+                        "filename" : "100GOPRO/GP010057.JPG",
+                        "creation_timestamp" : "1742821573",
+                        "modified_time" : "1742821573",
+                    }, {
+                        "filename" : "100GOPRO/GP010058.JPG",
+                        "creation_timestamp" : "1742821578",
+                        "modified_time" : "1742821578",
+                    }, {
+                        "filename" : "100GOPRO/GP010059.JPG",
+                        "creation_timestamp" : "1742821583",
+                        "modified_time" : "1742821583",
+                    }, {
+                        "filename" : "100GOPRO/GP010060.JPG",
+                        "creation_timestamp" : "1742821586",
+                        "modified_time" : "1742821586",
+                    }, {
+                        "filename" : "100GOPRO/GP010061.JPG",
+                        "creation_timestamp" : "1742821589",
+                        "modified_time" : "1742821589",
+                    }, {
+                        "filename" : "100GOPRO/GP010062.JPG",
+                        "creation_timestamp" : "1742821622",
+                        "modified_time" : "1742821622",
+                    }, {
+                        "filename" : "100GOPRO/GP010063.JPG",
+                        "creation_timestamp" : "1742821625",
+                        "modified_time" : "1742821625",
+                    }, {
+                        "filename" : "100GOPRO/GP010064.JPG",
+                        "creation_timestamp" : "1742821630",
+                        "modified_time" : "1742821630",
+                    }, {
+                        "filename" : "100GOPRO/GP010065.JPG",
+                        "creation_timestamp" : "1742821634",
+                        "modified_time" : "1742821634",
+                    }, {
+                        "filename" : "100GOPRO/GP010066.JPG",
+                        "creation_timestamp" : "1742821641",
+                        "modified_time" : "1742821641",
+                    }, {
+                        "filename" : "100GOPRO/GP010067.JPG",
+                        "creation_timestamp" : "1742821646",
+                        "modified_time" : "1742821646",
+                    }
+                ],
+            }
+        ],
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:30.108 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:30.108 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:30.118 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:30.133 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:30.180 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:30.180 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:30.180 logger.py                                  74 DEBUG    | header: Content-Length: 1580
+   MainThread:07:29:30.180 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1580
+   MainThread:07:29:30.180 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "False",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "False",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "46",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255522504",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "True",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "16",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1001",
+        "StatusId.PRESET" : "65536",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "0",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.LINEAR_27_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.SUPERPHOTO",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.OFF",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.TRADITIONAL_4_3_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_4_3",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_4_3",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_240_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:30.265 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/shutter/start
+   MainThread:07:29:30.265 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera Shutter",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/shutter",
+    "mode" : "start",
+<<<<<<<<--------------
+
+   MainThread:07:29:30.281 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:30.308 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/shutter/start HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:30.682 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:30.751 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:30.751 logger.py                                  74 DEBUG    | header: Content-Length: 3
+   MainThread:07:29:30.751 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/shutter/start HTTP/1.1" 200 3
+   MainThread:07:29:30.751 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/shutter/start",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+-------------->>>>>>>>
+
+   MainThread:07:29:30.751 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:30.751 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:30.766 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:30.782 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:30.810 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:30.810 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:30.810 logger.py                                  74 DEBUG    | header: Content-Length: 1580
+   MainThread:07:29:30.810 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1580
+   MainThread:07:29:30.825 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "True",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "True",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "46",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255522242",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "False",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "16",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1001",
+        "StatusId.PRESET" : "65536",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "0",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.LINEAR_27_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.SUPERPHOTO",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.OFF",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.TRADITIONAL_4_3_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_4_3",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_4_3",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_240_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:30.910 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:30.910 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:30.910 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:30.926 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:30.952 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:30.952 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:30.952 logger.py                                  74 DEBUG    | header: Content-Length: 1580
+   MainThread:07:29:30.952 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1580
+   MainThread:07:29:30.968 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "True",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "True",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "46",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255522242",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "False",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "16",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1001",
+        "StatusId.PRESET" : "65536",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "1",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.LINEAR_27_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.SUPERPHOTO",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.OFF",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.TRADITIONAL_4_3_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_4_3",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_4_3",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_240_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:33.058 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:33.058 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:33.058 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:33.073 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:33.101 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:33.101 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:33.101 logger.py                                  74 DEBUG    | header: Content-Length: 1580
+   MainThread:07:29:33.101 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1580
+   MainThread:07:29:33.116 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "True",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "True",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "46",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255522242",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "False",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "16",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1001",
+        "StatusId.PRESET" : "65536",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "1",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.LINEAR_27_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.SUPERPHOTO",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.OFF",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.TRADITIONAL_4_3_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_4_3",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_4_3",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_240_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:35.223 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:35.223 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:35.223 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:35.238 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:35.270 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:35.270 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:35.270 logger.py                                  74 DEBUG    | header: Content-Length: 1580
+   MainThread:07:29:35.270 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1580
+   MainThread:07:29:35.270 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "False",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "False",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "47",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255519358",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "True",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "16",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1001",
+        "StatusId.PRESET" : "65536",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "0",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.LINEAR_27_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.SUPERPHOTO",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.OFF",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.TRADITIONAL_4_3_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_4_3",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_4_3",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_240_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:35.358 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/media/list
+   MainThread:07:29:35.358 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Media List",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/media/list",
+<<<<<<<<--------------
+
+   MainThread:07:29:35.358 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:35.374 logger.py                                  74 DEBUG    | send: b'GET /gopro/media/list HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:35.390 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:35.390 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:35.390 logger.py                                  74 DEBUG    | header: Content-Length: 3594
+   MainThread:07:29:35.390 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/media/list HTTP/1.1" 200 3594
+   MainThread:07:29:35.390 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/media/list",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "identifier" : "115391177990272899",
+        "media" : [
+            {
+                "directory" : "100GOPRO",
+                "file_system" : [
+                    {
+                        "filename" : "100GOPRO/GP010001.JPG",
+                        "creation_timestamp" : "1742479267",
+                        "modified_time" : "1742479267",
+                    }, {
+                        "filename" : "100GOPRO/GP010002.JPG",
+                        "creation_timestamp" : "1742479400",
+                        "modified_time" : "1742479400",
+                    }, {
+                        "filename" : "100GOPRO/GP010003.JPG",
+                        "creation_timestamp" : "1742479440",
+                        "modified_time" : "1742479440",
+                    }, {
+                        "filename" : "100GOPRO/GP010004.JPG",
+                        "creation_timestamp" : "1742479446",
+                        "modified_time" : "1742479446",
+                    }, {
+                        "filename" : "100GOPRO/GP010005.JPG",
+                        "creation_timestamp" : "1742479469",
+                        "modified_time" : "1742479469",
+                    }, {
+                        "filename" : "100GOPRO/GP010006.JPG",
+                        "creation_timestamp" : "1742479503",
+                        "modified_time" : "1742479503",
+                    }, {
+                        "filename" : "100GOPRO/GP010007.JPG",
+                        "creation_timestamp" : "1742479506",
+                        "modified_time" : "1742479506",
+                    }, {
+                        "filename" : "100GOPRO/GP010008.JPG",
+                        "creation_timestamp" : "1742479514",
+                        "modified_time" : "1742479514",
+                    }, {
+                        "filename" : "100GOPRO/GP010009.JPG",
+                        "creation_timestamp" : "1742479517",
+                        "modified_time" : "1742479517",
+                    }, {
+                        "filename" : "100GOPRO/GP010010.JPG",
+                        "creation_timestamp" : "1742479520",
+                        "modified_time" : "1742479520",
+                    }, {
+                        "filename" : "100GOPRO/GX010011.MP4",
+                        "creation_timestamp" : "1742487980",
+                        "modified_time" : "1742487980",
+                        "low_res_video_size" : "2931666",
+                        "lrv_file_size" : "-1",
+                    }, {
+                        "filename" : "100GOPRO/GP010012.JPG",
+                        "creation_timestamp" : "1742488042",
+                        "modified_time" : "1742488042",
+                    }, {
+                        "filename" : "100GOPRO/GP010013.JPG",
+                        "creation_timestamp" : "1742488047",
+                        "modified_time" : "1742488047",
+                    }, {
+                        "filename" : "100GOPRO/GP010014.JPG",
+                        "creation_timestamp" : "1742488082",
+                        "modified_time" : "1742488082",
+                    }, {
+                        "filename" : "100GOPRO/GP010015.JPG",
+                        "creation_timestamp" : "1742488568",
+                        "modified_time" : "1742488568",
+                    }, {
+                        "filename" : "100GOPRO/GP010016.JPG",
+                        "creation_timestamp" : "1742488571",
+                        "modified_time" : "1742488571",
+                    }, {
+                        "filename" : "100GOPRO/GP010017.JPG",
+                        "creation_timestamp" : "1742488577",
+                        "modified_time" : "1742488577",
+                    }, {
+                        "filename" : "100GOPRO/GP010018.JPG",
+                        "creation_timestamp" : "1742488582",
+                        "modified_time" : "1742488582",
+                    }, {
+                        "filename" : "100GOPRO/GP010019.JPG",
+                        "creation_timestamp" : "1742488585",
+                        "modified_time" : "1742488585",
+                    }, {
+                        "filename" : "100GOPRO/GP010020.JPG",
+                        "creation_timestamp" : "1742488589",
+                        "modified_time" : "1742488589",
+                    }, {
+                        "filename" : "100GOPRO/GP010021.JPG",
+                        "creation_timestamp" : "1742488623",
+                        "modified_time" : "1742488623",
+                    }, {
+                        "filename" : "100GOPRO/GP010022.JPG",
+                        "creation_timestamp" : "1742488633",
+                        "modified_time" : "1742488633",
+                    }, {
+                        "filename" : "100GOPRO/GP010023.JPG",
+                        "creation_timestamp" : "1742488636",
+                        "modified_time" : "1742488636",
+                    }, {
+                        "filename" : "100GOPRO/GP010024.JPG",
+                        "creation_timestamp" : "1742488640",
+                        "modified_time" : "1742488640",
+                    }, {
+                        "filename" : "100GOPRO/GP010025.JPG",
+                        "creation_timestamp" : "1742488645",
+                        "modified_time" : "1742488645",
+                    }, {
+                        "filename" : "100GOPRO/GP010026.JPG",
+                        "creation_timestamp" : "1742488686",
+                        "modified_time" : "1742488686",
+                    }, {
+                        "filename" : "100GOPRO/GP010047.JPG",
+                        "creation_timestamp" : "1742821501",
+                        "modified_time" : "1742821501",
+                    }, {
+                        "filename" : "100GOPRO/GP010048.JPG",
+                        "creation_timestamp" : "1742821504",
+                        "modified_time" : "1742821504",
+                    }, {
+                        "filename" : "100GOPRO/GP010049.JPG",
+                        "creation_timestamp" : "1742821513",
+                        "modified_time" : "1742821513",
+                    }, {
+                        "filename" : "100GOPRO/GP010050.JPG",
+                        "creation_timestamp" : "1742821517",
+                        "modified_time" : "1742821517",
+                    }, {
+                        "filename" : "100GOPRO/GP010051.JPG",
+                        "creation_timestamp" : "1742821520",
+                        "modified_time" : "1742821520",
+                    }, {
+                        "filename" : "100GOPRO/GP010052.JPG",
+                        "creation_timestamp" : "1742821524",
+                        "modified_time" : "1742821524",
+                    }, {
+                        "filename" : "100GOPRO/GP010053.JPG",
+                        "creation_timestamp" : "1742821527",
+                        "modified_time" : "1742821527",
+                    }, {
+                        "filename" : "100GOPRO/GP010054.JPG",
+                        "creation_timestamp" : "1742821560",
+                        "modified_time" : "1742821560",
+                    }, {
+                        "filename" : "100GOPRO/GP010055.JPG",
+                        "creation_timestamp" : "1742821564",
+                        "modified_time" : "1742821564",
+                    }, {
+                        "filename" : "100GOPRO/GP010056.JPG",
+                        "creation_timestamp" : "1742821568",
+                        "modified_time" : "1742821568",
+                    }, {
+                        "filename" : "100GOPRO/GP010057.JPG",
+                        "creation_timestamp" : "1742821573",
+                        "modified_time" : "1742821573",
+                    }, {
+                        "filename" : "100GOPRO/GP010058.JPG",
+                        "creation_timestamp" : "1742821578",
+                        "modified_time" : "1742821578",
+                    }, {
+                        "filename" : "100GOPRO/GP010059.JPG",
+                        "creation_timestamp" : "1742821583",
+                        "modified_time" : "1742821583",
+                    }, {
+                        "filename" : "100GOPRO/GP010060.JPG",
+                        "creation_timestamp" : "1742821586",
+                        "modified_time" : "1742821586",
+                    }, {
+                        "filename" : "100GOPRO/GP010061.JPG",
+                        "creation_timestamp" : "1742821589",
+                        "modified_time" : "1742821589",
+                    }, {
+                        "filename" : "100GOPRO/GP010062.JPG",
+                        "creation_timestamp" : "1742821622",
+                        "modified_time" : "1742821622",
+                    }, {
+                        "filename" : "100GOPRO/GP010063.JPG",
+                        "creation_timestamp" : "1742821625",
+                        "modified_time" : "1742821625",
+                    }, {
+                        "filename" : "100GOPRO/GP010064.JPG",
+                        "creation_timestamp" : "1742821630",
+                        "modified_time" : "1742821630",
+                    }, {
+                        "filename" : "100GOPRO/GP010065.JPG",
+                        "creation_timestamp" : "1742821634",
+                        "modified_time" : "1742821634",
+                    }, {
+                        "filename" : "100GOPRO/GP010066.JPG",
+                        "creation_timestamp" : "1742821641",
+                        "modified_time" : "1742821641",
+                    }, {
+                        "filename" : "100GOPRO/GP010067.JPG",
+                        "creation_timestamp" : "1742821646",
+                        "modified_time" : "1742821646",
+                    }, {
+                        "filename" : "100GOPRO/GP010068.JPG",
+                        "creation_timestamp" : "1742887813",
+                        "modified_time" : "1742887813",
+                    }
+                ],
+            }
+        ],
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:35.539 gopro_base.py                             379 DEBUG    | Sending:  http://172.24.199.51:8080/gopro/camera/state
+   MainThread:07:29:35.539 gopro_base.py                             380 INFO     | 
+<<<<<<<<--------------
+    "id" : "Camera State",
+    "protocol" : "Protocol.HTTP",
+    "endpoint" : "gopro/camera/state",
+<<<<<<<<--------------
+
+   MainThread:07:29:35.549 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:35.565 logger.py                                  74 DEBUG    | send: b'GET /gopro/camera/state HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:35.596 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:35.596 logger.py                                  74 DEBUG    | header: Content-Type: application/json
+   MainThread:07:29:35.596 logger.py                                  74 DEBUG    | header: Content-Length: 1580
+   MainThread:07:29:35.596 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /gopro/camera/state HTTP/1.1" 200 1580
+   MainThread:07:29:35.596 gopro_base.py                             400 INFO     | 
+-------------->>>>>>>>
+    "id" : "http://172.24.199.51:8080/gopro/camera/state",
+    "status" : "ErrorCode.SUCCESS",
+    "protocol" : "Protocol.HTTP",
+    "data" : {
+        "StatusId.BATTERY_PRESENT" : "True",
+        "StatusId.INTERNAL_BATTERY_BARS" : "InternalBatteryBars.CHARGING",
+        "StatusId.OVERHEATING" : "False",
+        "StatusId.BUSY" : "False",
+        "StatusId.QUICK_CAPTURE" : "False",
+        "StatusId.ENCODING" : "False",
+        "StatusId.LCD_LOCK" : "False",
+        "StatusId.VIDEO_ENCODING_DURATION" : "0",
+        "StatusId.WIRELESS_CONNECTIONS_ENABLED" : "True",
+        "StatusId.PAIRING_STATE" : "PairingState.NEVER_STARTED",
+        "StatusId.LAST_PAIRING_TYPE" : "LastPairingType.NOT_PAIRING",
+        "StatusId.WIFI_SCAN_STATE" : "WifiScanState.NEVER_STARTED",
+        "StatusId.LAST_WIFI_SCAN_SUCCESS" : "0",
+        "StatusId.WIFI_PROVISIONING_STATE" : "WifiProvisioningState.NEVER_STARTED",
+        "StatusId.REMOTE_CONNECTED" : "False",
+        "StatusId.CONNECTED_WIFI_SSID" : "",
+        "StatusId.ACCESS_POINT_SSID" : "GP50225499",
+        "StatusId.CONNECTED_DEVICES" : "0",
+        "StatusId.PRIMARY_STORAGE" : "PrimaryStorage.OK",
+        "StatusId.REMAINING_PHOTOS" : "15043",
+        "StatusId.REMAINING_VIDEO_TIME" : "38737",
+        "StatusId.PHOTOS" : "47",
+        "StatusId.VIDEOS" : "1",
+        "StatusId.OTA" : "Ota.IDLE",
+        "StatusId.PENDING_FW_UPDATE_CANCEL" : "False",
+        "StatusId.LOCATE" : "False",
+        "StatusId.TIMELAPSE_INTERVAL_COUNTDOWN" : "0",
+        "StatusId.SD_CARD_REMAINING" : "255519358",
+        "StatusId.PREVIEW_STREAM_AVAILABLE" : "True",
+        "StatusId.WIFI_BARS" : "4",
+        "StatusId.ACTIVE_HILIGHTS" : "0",
+        "StatusId.TIME_SINCE_LAST_HILIGHT" : "0",
+        "StatusId.MINIMUM_STATUS_POLL_PERIOD" : "500",
+        "StatusId.LIVEVIEW_EXPOSURE_SELECT_MODE" : "LiveviewExposureSelectMode.DISABLED",
+        "StatusId.LIVEVIEW_Y" : "0",
+        "StatusId.LIVEVIEW_X" : "0",
+        "StatusId.GPS_LOCK" : "False",
+        "StatusId.AP_MODE" : "False",
+        "StatusId.INTERNAL_BATTERY_PERCENTAGE" : "90",
+        "StatusId.MICROPHONE_ACCESSORY" : "MicrophoneAccessory.ACCESSORY_NOT_CONNECTED",
+        "StatusId.ZOOM_LEVEL" : "0",
+        "StatusId.WIRELESS_BAND" : "WirelessBand.NUM_5_GHZ",
+        "StatusId.ZOOM_AVAILABLE" : "True",
+        "StatusId.NUM_5GHZ_AVAILABLE" : "True",
+        "StatusId.READY" : "True",
+        "StatusId.OTA_CHARGED" : "True",
+        "StatusId.COLD" : "False",
+        "StatusId.ROTATION" : "Rotation.NUM_180_DEGREES_UPSIDE_DOWN_",
+        "StatusId.ZOOM_WHILE_ENCODING" : "False",
+        "StatusId.FLATMODE" : "16",
+        "StatusId.VIDEO_PRESET" : "0",
+        "StatusId.PHOTO_PRESET" : "65536",
+        "StatusId.TIMELAPSE_PRESET" : "131072",
+        "StatusId.PRESET_GROUP" : "1001",
+        "StatusId.PRESET" : "65536",
+        "StatusId.PRESET_MODIFIED" : "150994943",
+        "StatusId.CAPTURE_DELAY_ACTIVE" : "False",
+        "StatusId.MEDIA_MOD_STATE" : "MediaModState.MICROPHONE_REMOVED",
+        "StatusId.TIME_WARP_SPEED" : "TimeWarpSpeed.NUM_15X",
+        "StatusId.HINDSIGHT" : "False",
+        "StatusId.SCHEDULED_CAPTURE_PRESET_ID" : "4294967295",
+        "StatusId.SCHEDULED_CAPTURE" : "False",
+        "StatusId.DISPLAY_MOD_STATUS" : "DisplayModStatus.NUM_000_DISPLAY_MOD_0_HDMI_0_DISPLAY_MOD_CONNECTED_FALSE",
+        "StatusId.SD_CARD_WRITE_SPEED_ERROR" : "False",
+        "StatusId.SD_CARD_ERRORS" : "0",
+        "StatusId.TURBO_TRANSFER" : "False",
+        "StatusId.CAMERA_CONTROL_ID" : "CameraControlId.CAMERA_IDLE_NO_ONE_IS_ATTEMPTING_TO_CHANGE_CAMERA_SETTINGS",
+        "StatusId.USB_CONNECTED" : "False",
+        "StatusId.USB_CONTROLLED" : "UsbControlled.ENABLED",
+        "StatusId.SD_CARD_CAPACITY" : "255802212",
+        "StatusId.PHOTO_INTERVAL_CAPTURE_COUNT" : "0",
+        "SettingId.VIDEO_RESOLUTION" : "VideoResolution.NUM_4K",
+        "SettingId.VIDEO_TIMELAPSE_RATE" : "VideoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.PHOTO_TIMELAPSE_RATE" : "PhotoTimelapseRate.NUM_0_5_SECONDS",
+        "SettingId.NIGHTLAPSE_RATE" : "NightlapseRate.NUM_10_SECONDS",
+        "SettingId.WEBCAM_DIGITAL_LENSES" : "WebcamDigitalLenses.WIDE",
+        "SettingId.AUTO_POWER_DOWN" : "AutoPowerDown.NUM_5_MIN",
+        "SettingId.GPS" : "Gps.OFF",
+        "SettingId.LED" : "Led.ALL_ON",
+        "SettingId.VIDEO_LENS" : "VideoLens.WIDE",
+        "SettingId.PHOTO_LENS" : "PhotoLens.LINEAR_27_MP",
+        "SettingId.TIME_LAPSE_DIGITAL_LENSES" : "TimeLapseDigitalLenses.WIDE_27_MP",
+        "SettingId.PHOTO_OUTPUT" : "PhotoOutput.SUPERPHOTO",
+        "SettingId.MEDIA_FORMAT" : "MediaFormat.TIME_LAPSE_VIDEO",
+        "SettingId.ANTI_FLICKER" : "Anti_Flicker.NTSC",
+        "SettingId.HYPERSMOOTH" : "Hypersmooth.OFF",
+        "SettingId.HINDSIGHT" : "Hindsight.OFF",
+        "SettingId.PHOTO_SINGLE_INTERVAL" : "PhotoSingleInterval.OFF",
+        "SettingId.PHOTO_INTERVAL_DURATION" : "PhotoIntervalDuration.OFF",
+        "SettingId.CONTROLS" : "Controls.PRO",
+        "SettingId.EASY_MODE_SPEED" : "EasyModeSpeed.NUM_1X_SPEED_LOW_LIGHT_V2_",
+        "SettingId.WIRELESS_BAND" : "WirelessBand.NUM_5GHZ",
+        "SettingId.STAR_TRAILS_LENGTH" : "StarTrailsLength.MAX",
+        "SettingId.SYSTEM_VIDEO_MODE" : "SystemVideoMode.HIGHEST_QUALITY",
+        "SettingId.VIDEO_BIT_RATE" : "VideoBitRate.STANDARD",
+        "SettingId.BIT_DEPTH" : "BitDepth.NUM_8_BIT",
+        "SettingId.PROFILES" : "Profiles.STANDARD",
+        "SettingId.VIDEO_EASY_MODE" : "VideoEasyMode.STANDARD_VIDEO",
+        "SettingId.LAPSE_MODE" : "LapseMode.TIMEWARP",
+        "SettingId.MAX_LENS_MOD" : "MaxLensMod.AUTO_DETECT",
+        "SettingId.FRAMING" : "Framing.TRADITIONAL_4_3_V2",
+        "SettingId.CAMERA_VOLUME" : "CameraVolume.HIGH",
+        "SettingId.SETUP_SCREEN_SAVER" : "SetupScreenSaver.NUM_1_MIN",
+        "SettingId.SETUP_LANGUAGE" : "SetupLanguage.ENGLISH_US",
+        "SettingId.PHOTO_MODE" : "PhotoMode.SUPERPHOTO",
+        "SettingId.VIDEO_FRAMING" : "VideoFraming.NUM_4_3",
+        "SettingId.MULTI_SHOT_FRAMING" : "MultiShotFraming.NUM_4_3",
+        "SettingId.FRAME_RATE" : "FrameRate.NUM_240_0",
+    },
+-------------->>>>>>>>
+
+   MainThread:07:29:35.680 gopro_base.py                             408 DEBUG    | Sending:  http://172.24.199.51:8080/videos/DCIM/100GOPRO/GP010068.JPG
+   MainThread:07:29:35.680 connectionpool.py                         241 DEBUG    | Starting new HTTP connection (1): 172.24.199.51:8080
+   MainThread:07:29:35.696 logger.py                                  74 DEBUG    | send: b'GET /videos/DCIM/100GOPRO/GP010068.JPG HTTP/1.1\r\nHost: 172.24.199.51:8080\r\nUser-Agent: python-requests/2.32.3\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
+   MainThread:07:29:35.696 logger.py                                  74 DEBUG    | reply: 'HTTP/1.1 200 OK\r\n'
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Date: Tue, 25 Mar 2025 11:30:31 GMT
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Last-Modified: Tue, 25 Mar 2025 07:30:30 GMT
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Etag: "67e25b96.2763232"
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Content-Type: image/jpeg
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Connection: keep-alive
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Cache-Control: max-age=3600
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Content-Length: 2763232
+   MainThread:07:29:35.724 logger.py                                  74 DEBUG    | header: Accept-Ranges: bytes
+   MainThread:07:29:35.724 connectionpool.py                         544 DEBUG    | http://172.24.199.51:8080 "GET /videos/DCIM/100GOPRO/GP010068.JPG HTTP/1.1" 200 2763232
+   MainThread:07:29:35.724 gopro_base.py                             413 DEBUG    | receiving stream to photo.jpg...
