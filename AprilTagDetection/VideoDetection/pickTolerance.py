@@ -1,8 +1,20 @@
 import cv2
 import numpy as np
-import time, keyboard
+import time, keyboard, os, statistics
 import cv2.aruco as aruco
 from vision.video import *
+import pandas as pd
+from pandas import DataFrame
+from activeOriginHelpers import avgFilter, liveDifference
+
+class PositionData:
+    def __init__(self, names, ids, x, y, z, theta):
+        self.names = names
+        self.ids = ids
+        self.x = x
+        self.y = y
+        self.z = z
+        self.theta = theta
 
 def activePosUserInput(cap, resolution, tagSize, K, D, displayScale = 0.5):
     """gives current position of tag until user takes a "screenshot" of the starting position"""
@@ -144,19 +156,28 @@ def diffFromOrigin(cap, resolution, tagSize, K, D, origin, displayScale=0.5):
 
         frameCount += 1
 
-
-def activeOrigin(cap, tagSize, K, D, resolution=3, displayScale=0.5):
+def activeOrigin(cap, tagSize, K, D, savePath, resolution=3, displayScale=0.5):
+    i=0
     origin = None
+    frameCount = 0
+
+    nameData = []
+    idData = []
+    xData = []
+    yData = []
+    zData = []
+    tData = []
+
+    
     if cap is None:
         print("Could not open GoPro camera.")
         exit()
 
-    frameCount = 0
 
     while cap.isOpened():
         ret, frame = cap.read()
         
-        # display scale
+        # display scale initialization
         if frameCount == 0 : 
             # displayScale = .3
             h, w = frame.shape[:2]
@@ -171,20 +192,22 @@ def activeOrigin(cap, tagSize, K, D, resolution=3, displayScale=0.5):
         if frameCount % resolution == 0:
             #undistort
             undImg = cv2.undistort(frame, K, D, None) 
+            key = cv2.waitKey(1)
 
             # ask for user input
             # user = input("Hit Enter key to record start position...")
-            cv2.putText(undImg, "Hit Spacebar to record start position Enter to exit", (0,1050), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=4, lineType=cv2.LINE_AA)
+            cv2.putText(undImg, f"Spacebar to record start position, Enter to take a photo, C to exit", (0,1050), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 255), thickness=2, lineType=cv2.LINE_AA)
 
             # get tag position
             success, markerID, pixCoord, worldCoord, theta = findTag(undImg, tagSize, K, D)
-
+            
             if success: 
+
                 if origin is None:
                     # # draw center point of tags
                     cv2.circle(undImg, (pixCoord[0],pixCoord[1]), radius=5, color=(0,0,255), thickness=10)
                     thetaText = f"{round(theta, 3)} deg"
-                    worldCoordText = f"({worldCoord}) mm"
+                    # worldCoordText = f"({worldCoord}) mm"
                     idText = f"tagID: {markerID}"
 
                     cv2.putText(undImg, "Current Position:", (25, 50), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
@@ -192,41 +215,44 @@ def activeOrigin(cap, tagSize, K, D, resolution=3, displayScale=0.5):
                     cv2.putText(undImg, thetaText, (25, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
                     cv2.putText(undImg, idText, (25, 200), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(230, 70, 173), thickness=6, lineType=cv2.LINE_AA)
                 else: 
-                    cv2.circle(undImg, (origin[1][0],origin[1][1]), radius=5, color=(0,255,0), thickness=10) # mark origin
-                    
-                    # # draw center point of tags
-                    
-                    originTheta = origin[3]
-                    originWorld = origin[2]
-                    cv2.circle(undImg, (pixCoord[0],pixCoord[1]), radius=5, color=(0,0,255), thickness=10)
-                    diffTheta = theta - originTheta
-                    diffWorld = np.subtract(worldCoord, originWorld)
-                    thetaText = f"{round(diffTheta, 3)} deg"
 
-                    idText = f"tagID: {markerID}"
-                    cv2.putText(undImg, "Difference:", (25, 50), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
-                    cv2.putText(undImg, str(diffWorld), (25, 100), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
-                    cv2.putText(undImg, thetaText, (25, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
-                    cv2.putText(undImg, idText, (25, 200), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(230, 70, 173), thickness=6, lineType=cv2.LINE_AA)
+                    undImg = liveDifference(undImg, origin, markerID, pixCoord, worldCoord, theta)
+                
+                if key == 32: # spacebar to record origin
+                    origin = [markerID, pixCoord, worldCoord, theta]
+                    originStart = True
 
-            
+                if key == 13: # enter to save frame
+                    filename = os.path.join(savePath, f"img{i}.jpg")
+                    cv2.imwrite(filename, undImg)
+
+                    if origin is not None:
+                    
+                        nameData.append(i)
+                        idData.append(markerID)
+                        xData.append(diffWorld[0])
+                        yData.append(diffWorld[1])
+                        zData.append(diffWorld[2])
+                        tData.append(diffTheta)  
+                    else:
+                        nameData.append(i)
+                        idData.append(markerID)
+                        xData.append(None)
+                        yData.append(None)
+                        zData.append(None)
+                        tData.append(None)                     
+                    i+=1 
+                                
+                if key == ord('c'): # press c to exit
+                    positionData = PositionData(nameData, idData, xData, yData, zData, tData)
+                
+                    return positionData, diffWorld, diffTheta
 
 
             cv2.namedWindow('video feed', cv2.WINDOW_NORMAL)
             cv2.resizeWindow('video feed', w, h)
             cv2.imshow('video feed', undImg)
-            key = cv2.waitKey(1)
-            # print(key) 
-
-            if key == 32 and success: # spacebar to record origin
-                origin = [markerID, pixCoord, worldCoord, theta]
-
-            if key == 13 and success: # enter to exit
-                return diffWorld, diffTheta
-
-            if origin is not None: 
-                cv2.circle(undImg, (origin[1][0],origin[1][1]), radius=5, color=(0,255,0), thickness=10) # mark origin
-
+            
 
 
         frameCount += 1
@@ -240,18 +266,30 @@ if __name__ == '__main__':
     # get april tag position
     # get difference from datum/starting position
 
-    tagSize = 150 # mm
+    tagSize = 42.3 # mm
     goProSettings = ["photo_linear", "photo_fisheye", "video_fisheye"]
     setting = goProSettings[2]
     cam = 1
     resolution = 3
     displayScale = 0.5
+    savePath = f'C:/Users/irosenstein/Documents/Vision/Results/StretchBot/pickTolerance'
+    name= 'thetaExp'
 
     cap = open_camera(cam)
     K, D, DIM, R = getIntrinsicParams(setting)
     # print(f'K: \n {K}')
     # print(f'D: \n {D}')
-    deltaWorld, deltaTheta = activeOrigin(cap, tagSize, K, D, resolution)
+    deltaPos, deltaWorld, deltaTheta = activeOrigin(cap, tagSize, K, D, savePath, resolution)
+
+    df = DataFrame({
+        "Img Name": deltaPos.names,
+        "Tag ID": deltaPos.ids,
+        "x": deltaPos.x,
+        "y": deltaPos.y,
+        "z": deltaPos.z,
+        "theta": deltaPos.theta   
+    })
+    df.to_excel(f'{savePath}/{name}.xlsx', sheet_name='sheet1', index=False)
 
     cap.release()
     cv2.destroyAllWindows()
