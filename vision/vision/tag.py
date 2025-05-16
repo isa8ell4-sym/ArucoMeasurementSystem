@@ -52,7 +52,7 @@ class Tag:
 
             # Extract Euler angles (Theta is the yaw angle)
             theta_z = np.degrees(np.arctan2(R[1, 0], R[0, 0]))  # Yaw (Theta)
-
+            # plot whole rotation matrix to see noise
             
             worldPosMM = [int(tvec[0][0]), int(tvec[0][1]), int(tvec[0][2])]
             self.worldCoord = worldPosMM

@@ -160,7 +160,7 @@ def activeOrigin(cap, tagSize, K, D, savePath, resolution=20, displayScale=0.5):
     i=0
     origin = None
     frameCount = 0
-
+    relTheta = True
 
     measuredTheta = []
     measuredWC = []
@@ -198,11 +198,12 @@ def activeOrigin(cap, tagSize, K, D, savePath, resolution=20, displayScale=0.5):
             print('failed to open frame')
             break
 
-        # if frameCount % resolution == 0:
 
         #undistort
         undImg = cv2.undistort(frame, K, D, None) 
         key = cv2.waitKey(1)
+
+
 
         # ask for user input
         cv2.putText(undImg, f"Spacebar to record start position, Enter to take a photo, C to exit", (0,1050), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 255), thickness=2, lineType=cv2.LINE_AA)
@@ -210,40 +211,56 @@ def activeOrigin(cap, tagSize, K, D, savePath, resolution=20, displayScale=0.5):
         # get tag position
         success, markerID, pixCoord, worldCoord, theta = findTag(undImg, tagSize, K, D)
 
-        if success and len(measuredTheta) >= resolution: 
+        if success: 
 
-            relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
-            currWorld = avgFilterNested(measuredWC, numFrames=resolution)
-            currPix = avgFilterNested(measuredPixC, numFrames=resolution)
-
-            # print(f'currTheta: {currTheta}\nCurrWorld:{currWorld}\ncurrPix:{currPix}')
-
-            if origin is None:
-                # # draw center point of tags
-                cv2.circle(undImg, (int(currPix[0]),int(currPix[1])), radius=5, color=(0,0,255), thickness=10)
+            cv2.circle(undImg, (int(pixCoord[0]),int(pixCoord[1])), radius=5, color=(0,0,255), thickness=10) # always mark center of tag
+           
+            if origin: # origin exists, delta readings
+                # print(origin)
+                cv2.circle(undImg, (int(origin[1][0]),int(origin[1][1])), radius=5, color=(0,255,0), thickness=10) # mark origin
                 
+                if len(measuredTheta) >= resolution: 
+
+                    relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
+                    currWorld = avgFilterNested(measuredWC, numFrames=resolution)
+                    currPix = avgFilterNested(measuredPixC, numFrames=resolution)
+
+                    undImg, diffWorld, diffTheta = liveDifference(undImg, origin, markerID, currPix, currWorld, currTheta, relTheta)
+
+                    measuredTheta = []
+                    measuredWC = []
+                    measuredPixC = []
+
+                elif len(measuredTheta) < resolution: 
+
+                    measuredTheta.append(theta)
+                    measuredWC.append(worldCoord)
+                    measuredPixC.append(pixCoord)
+
+                try: 
+                    undImg = textPos(undImg, "Delta:", (0,0,255), markerID, diffWorld, diffTheta, relTheta)
+                except:
+                    undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta, relTheta)
+
+            else:
+
+                if len(measuredTheta) >= resolution: 
+
+                    relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
+                    currWorld = avgFilterNested(measuredWC, numFrames=resolution)
+                    currPix = avgFilterNested(measuredPixC, numFrames=resolution)
+
+                    measuredTheta = []
+                    measuredWC = []
+                    measuredPixC = []
+
+                elif len(measuredTheta) < resolution: 
+
+                    measuredTheta.append(theta)
+                    measuredWC.append(worldCoord)
+                    measuredPixC.append(pixCoord)
+
                 undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta, relTheta)
-
-            else: 
-
-                undImg, diffWorld, diffTheta = liveDifference(undImg, origin, markerID, currPix, currWorld, currTheta, relTheta)
-            
-
-            measuredTheta = []
-            measuredWC = []
-            measuredPixC = []
-
-        elif success and len(measuredTheta) < resolution: 
-
-            measuredTheta.append(theta)
-            measuredWC.append(worldCoord)
-            measuredPixC.append(pixCoord)
-
-            if currTheta is not None: 
-                undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta)
-
-        if origin: # always display original position
-            cv2.circle(undImg, (origin[1][0],origin[1][1]), radius=5, color=(0,255,0), thickness=10) # mark origin
 
 
         if key == 32: # spacebar to record origin
@@ -276,6 +293,8 @@ def activeOrigin(cap, tagSize, K, D, savePath, resolution=20, displayScale=0.5):
         
             return positionData
 
+
+
         cv2.namedWindow('video feed', cv2.WINDOW_NORMAL)
         cv2.resizeWindow('video feed', w, h)
         cv2.imshow('video feed', undImg)
@@ -290,11 +309,11 @@ if __name__ == '__main__':
     # get april tag position
     # get difference from datum/starting position
 
-    tagSize = 42.3 # mm
+    tagSize = 50 # mm
     goProSettings = ["photo_linear", "photo_fisheye", "video_fisheye"]
     setting = goProSettings[2]
     cam = 1
-    resolution = 20
+    resolution = 15
     displayScale = 0.5
     savePath = f'C:/Users/irosenstein/Documents/Vision/Results/StretchBot/pickTolerance'
     name= 'thetaExp'

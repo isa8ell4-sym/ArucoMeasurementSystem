@@ -41,26 +41,32 @@ def liveDifference(undImg, origin, markerID, pixCoord, worldCoord, theta, thetaR
     # cv2.circle(undImg, (origin[1][0],origin[1][1]), radius=5, color=(0,255,0), thickness=10) # mark origin
     originTheta = origin[3]
     originWorld = origin[2]
-    print(f'pixCoord: {pixCoord}')
+    # print(f'pixCoord: {pixCoord}')
     cv2.circle(undImg, (int(pixCoord[0]),int(pixCoord[1])), radius=5, color=(0,0,255), thickness=10)
     diffTheta = theta - originTheta
     diffWorld = np.subtract(worldCoord, originWorld)
 
-    undImg = textPos(undImg, "Delta:", (0,0,255), markerID, diffWorld, diffTheta, thetaRel)
 
     return undImg, diffWorld, diffTheta
 
 def textPos(img, title, color, id=None, pos=None, theta=None, thetaRel=True):
+
     cv2.putText(img, title, (25, 50), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=color, thickness=5, lineType=cv2.LINE_AA)
-    if id is not None:
+    if id is not None and theta is not None and pos is not None:
+        # print(id)
         thetaText = f"{round(theta, 3)} deg"
         idText = f"tagID: {id}"
-        cv2.putText(img, str(pos), (25, 100), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=color, thickness=5, lineType=cv2.LINE_AA)
+        posText = f'[{round(pos[0], 1)}, {round(pos[1], 1)}, {round(pos[2], 1)}]'
+        cv2.putText(img, posText, (25, 100), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=color, thickness=5, lineType=cv2.LINE_AA)
+        
         if thetaRel: 
             thetaColor = color
         else: 
             thetaColor = (0,0,255) # if not reliable make color red
+       
         cv2.putText(img, thetaText, (25, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=thetaColor, thickness=5, lineType=cv2.LINE_AA)
         cv2.putText(img, idText, (25, 200), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(230, 70, 173), thickness=5, lineType=cv2.LINE_AA)
 
     return img
+
+
