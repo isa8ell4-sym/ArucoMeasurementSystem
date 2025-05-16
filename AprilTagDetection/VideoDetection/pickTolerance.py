@@ -5,7 +5,7 @@ import cv2.aruco as aruco
 from vision.video import *
 import pandas as pd
 from pandas import DataFrame
-from activeOriginHelpers import avgFilter, liveDifference
+from activeOriginHelpers import avgFilter, liveDifference, avgFilterNested, textPos
 
 class PositionData:
     def __init__(self, names, ids, x, y, z, theta):
@@ -156,10 +156,19 @@ def diffFromOrigin(cap, resolution, tagSize, K, D, origin, displayScale=0.5):
 
         frameCount += 1
 
-def activeOrigin(cap, tagSize, K, D, savePath, resolution=3, displayScale=0.5):
+def activeOrigin(cap, tagSize, K, D, savePath, resolution=20, displayScale=0.5):
     i=0
     origin = None
     frameCount = 0
+
+
+    measuredTheta = []
+    measuredWC = []
+    measuredPixC = []
+
+    currWorld = []
+    currTheta = None
+    currPix = []
 
     nameData = []
     idData = []
@@ -189,73 +198,88 @@ def activeOrigin(cap, tagSize, K, D, savePath, resolution=3, displayScale=0.5):
             print('failed to open frame')
             break
 
-        if frameCount % resolution == 0:
-            #undistort
-            undImg = cv2.undistort(frame, K, D, None) 
-            key = cv2.waitKey(1)
+        # if frameCount % resolution == 0:
 
-            # ask for user input
-            # user = input("Hit Enter key to record start position...")
-            cv2.putText(undImg, f"Spacebar to record start position, Enter to take a photo, C to exit", (0,1050), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 255), thickness=2, lineType=cv2.LINE_AA)
+        #undistort
+        undImg = cv2.undistort(frame, K, D, None) 
+        key = cv2.waitKey(1)
 
-            # get tag position
-            success, markerID, pixCoord, worldCoord, theta = findTag(undImg, tagSize, K, D)
-            
-            if success: 
+        # ask for user input
+        cv2.putText(undImg, f"Spacebar to record start position, Enter to take a photo, C to exit", (0,1050), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 255), thickness=2, lineType=cv2.LINE_AA)
 
-                if origin is None:
-                    # # draw center point of tags
-                    cv2.circle(undImg, (pixCoord[0],pixCoord[1]), radius=5, color=(0,0,255), thickness=10)
-                    thetaText = f"{round(theta, 3)} deg"
-                    # worldCoordText = f"({worldCoord}) mm"
-                    idText = f"tagID: {markerID}"
+        # get tag position
+        success, markerID, pixCoord, worldCoord, theta = findTag(undImg, tagSize, K, D)
 
-                    cv2.putText(undImg, "Current Position:", (25, 50), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
-                    cv2.putText(undImg, str(worldCoord), (25, 100), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
-                    cv2.putText(undImg, thetaText, (25, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
-                    cv2.putText(undImg, idText, (25, 200), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(230, 70, 173), thickness=6, lineType=cv2.LINE_AA)
-                else: 
+        if success and len(measuredTheta) >= resolution: 
 
-                    undImg = liveDifference(undImg, origin, markerID, pixCoord, worldCoord, theta)
+            relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
+            currWorld = avgFilterNested(measuredWC, numFrames=resolution)
+            currPix = avgFilterNested(measuredPixC, numFrames=resolution)
+
+            # print(f'currTheta: {currTheta}\nCurrWorld:{currWorld}\ncurrPix:{currPix}')
+
+            if origin is None:
+                # # draw center point of tags
+                cv2.circle(undImg, (int(currPix[0]),int(currPix[1])), radius=5, color=(0,0,255), thickness=10)
                 
-                if key == 32: # spacebar to record origin
-                    origin = [markerID, pixCoord, worldCoord, theta]
-                    originStart = True
+                undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta, relTheta)
 
-                if key == 13: # enter to save frame
-                    filename = os.path.join(savePath, f"img{i}.jpg")
-                    cv2.imwrite(filename, undImg)
+            else: 
 
-                    if origin is not None:
-                    
-                        nameData.append(i)
-                        idData.append(markerID)
-                        xData.append(diffWorld[0])
-                        yData.append(diffWorld[1])
-                        zData.append(diffWorld[2])
-                        tData.append(diffTheta)  
-                    else:
-                        nameData.append(i)
-                        idData.append(markerID)
-                        xData.append(None)
-                        yData.append(None)
-                        zData.append(None)
-                        tData.append(None)                     
-                    i+=1 
-                                
-                if key == ord('c'): # press c to exit
-                    positionData = PositionData(nameData, idData, xData, yData, zData, tData)
-                
-                    return positionData, diffWorld, diffTheta
-
-
-            cv2.namedWindow('video feed', cv2.WINDOW_NORMAL)
-            cv2.resizeWindow('video feed', w, h)
-            cv2.imshow('video feed', undImg)
+                undImg, diffWorld, diffTheta = liveDifference(undImg, origin, markerID, currPix, currWorld, currTheta, relTheta)
             
 
+            measuredTheta = []
+            measuredWC = []
+            measuredPixC = []
 
-        frameCount += 1
+        elif success and len(measuredTheta) < resolution: 
+
+            measuredTheta.append(theta)
+            measuredWC.append(worldCoord)
+            measuredPixC.append(pixCoord)
+
+            if currTheta is not None: 
+                undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta)
+
+        if origin: # always display original position
+            cv2.circle(undImg, (origin[1][0],origin[1][1]), radius=5, color=(0,255,0), thickness=10) # mark origin
+
+
+        if key == 32: # spacebar to record origin
+            print("record origin")
+            origin = [markerID, currPix, currWorld, currTheta]
+
+        if key == 13: # enter to save frame
+            filename = os.path.join(savePath, f"img{i}.jpg")
+            cv2.imwrite(filename, undImg)
+
+            if origin is not None:
+            
+                nameData.append(i)
+                idData.append(markerID)
+                xData.append(diffWorld[0])
+                yData.append(diffWorld[1])
+                zData.append(diffWorld[2])
+                tData.append(diffTheta)  
+            else:
+                nameData.append(i)
+                idData.append(markerID)
+                xData.append(None)
+                yData.append(None)
+                zData.append(None)
+                tData.append(None)                     
+            i+=1 
+                        
+        if key == ord('c'): # press c to exit
+            positionData = PositionData(nameData, idData, xData, yData, zData, tData)
+        
+            return positionData
+
+        cv2.namedWindow('video feed', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('video feed', w, h)
+        cv2.imshow('video feed', undImg)
+        
 
 
 if __name__ == '__main__':
@@ -270,7 +294,7 @@ if __name__ == '__main__':
     goProSettings = ["photo_linear", "photo_fisheye", "video_fisheye"]
     setting = goProSettings[2]
     cam = 1
-    resolution = 3
+    resolution = 20
     displayScale = 0.5
     savePath = f'C:/Users/irosenstein/Documents/Vision/Results/StretchBot/pickTolerance'
     name= 'thetaExp'
@@ -279,7 +303,7 @@ if __name__ == '__main__':
     K, D, DIM, R = getIntrinsicParams(setting)
     # print(f'K: \n {K}')
     # print(f'D: \n {D}')
-    deltaPos, deltaWorld, deltaTheta = activeOrigin(cap, tagSize, K, D, savePath, resolution)
+    deltaPos = activeOrigin(cap, tagSize, K, D, savePath, resolution) #TODO: make theta colored if unreliable
 
     df = DataFrame({
         "Img Name": deltaPos.names,
