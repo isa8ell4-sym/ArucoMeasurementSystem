@@ -185,120 +185,120 @@ def activeOrigin(cap, tagSize, K, D, savePath, resolution=20, displayScale=0.5):
 
     while cap.isOpened():
         ret, frame = cap.read()
-        
-        # display scale initialization
-        if frameCount == 0 : 
-            # displayScale = .3
-            h, w = frame.shape[:2]
-            # print(h, w)
-            h = int(h * displayScale)
-            w = int(w * displayScale)
 
-        if not ret:
-            print('failed to open frame')
-            break
+        if frameCount % 3 ==0:        
+            # display scale initialization
+            if frameCount == 0 : 
+                # displayScale = .3
+                h, w = frame.shape[:2]
+                # print(h, w)
+                h = int(h * displayScale)
+                w = int(w * displayScale)
 
-
-        #undistort
-        undImg = cv2.undistort(frame, K, D, None) 
-        key = cv2.waitKey(1)
+            if not ret:
+                print('failed to open frame')
+                break
 
 
+            #undistort
+            undImg = cv2.undistort(frame, K, D, None) 
+            key = cv2.waitKey(1)
 
-        # ask for user input
-        cv2.putText(undImg, f"Spacebar to record start position, Enter to take a photo, C to exit", (0,1050), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 255), thickness=2, lineType=cv2.LINE_AA)
+            # ask for user input
+            cv2.putText(undImg, f"Spacebar to record start position, Enter to take a photo, C to exit", (0,1050), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 255), thickness=2, lineType=cv2.LINE_AA)
 
-        # get tag position
-        success, markerID, pixCoord, worldCoord, theta = findTag(undImg, tagSize, K, D)
+            # get tag position
+            success, markerID, pixCoord, worldCoord, theta = findTag(undImg, tagSize, K, D)
 
-        if success: 
+            if success: 
 
-            cv2.circle(undImg, (int(pixCoord[0]),int(pixCoord[1])), radius=5, color=(0,0,255), thickness=10) # always mark center of tag
-           
-            if origin: # origin exists, delta readings
-                # print(origin)
-                cv2.circle(undImg, (int(origin[1][0]),int(origin[1][1])), radius=5, color=(0,255,0), thickness=10) # mark origin
-                
-                if len(measuredTheta) >= resolution: 
+                cv2.circle(undImg, (int(pixCoord[0]),int(pixCoord[1])), radius=5, color=(0,0,255), thickness=10) # always mark center of tag
+            
+                if origin: # origin exists, delta readings
+                    # print(origin)
+                    cv2.circle(undImg, (int(origin[1][0]),int(origin[1][1])), radius=5, color=(0,255,0), thickness=10) # mark origin
+                    
+                    if len(measuredTheta) >= resolution: 
 
-                    relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
-                    currWorld = avgFilterNested(measuredWC, numFrames=resolution)
-                    currPix = avgFilterNested(measuredPixC, numFrames=resolution)
+                        relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
+                        currWorld = avgFilterNested(measuredWC, numFrames=resolution)
+                        currPix = avgFilterNested(measuredPixC, numFrames=resolution)
 
-                    undImg, diffWorld, diffTheta = liveDifference(undImg, origin, markerID, currPix, currWorld, currTheta, relTheta)
+                        undImg, diffWorld, diffTheta = liveDifference(undImg, origin, markerID, currPix, currWorld, currTheta, relTheta)
 
-                    measuredTheta = []
-                    measuredWC = []
-                    measuredPixC = []
+                        measuredTheta = []
+                        measuredWC = []
+                        measuredPixC = []
 
-                elif len(measuredTheta) < resolution: 
+                    elif len(measuredTheta) < resolution: 
 
-                    measuredTheta.append(theta)
-                    measuredWC.append(worldCoord)
-                    measuredPixC.append(pixCoord)
+                        measuredTheta.append(theta)
+                        measuredWC.append(worldCoord)
+                        measuredPixC.append(pixCoord)
 
-                try: 
-                    undImg = textPos(undImg, "Delta:", (0,0,255), markerID, diffWorld, diffTheta, relTheta)
-                except:
+                    try: 
+                        undImg = textPos(undImg, "Delta:", (0,0,255), markerID, diffWorld, diffTheta, relTheta)
+                    except:
+                        undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta, relTheta)
+
+                else:
+
+                    if len(measuredTheta) >= resolution: 
+
+                        relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
+                        currWorld = avgFilterNested(measuredWC, numFrames=resolution)
+                        currPix = avgFilterNested(measuredPixC, numFrames=resolution)
+
+                        measuredTheta = []
+                        measuredWC = []
+                        measuredPixC = []
+
+                    elif len(measuredTheta) < resolution: 
+
+                        measuredTheta.append(theta)
+                        measuredWC.append(worldCoord)
+                        measuredPixC.append(pixCoord)
+
                     undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta, relTheta)
 
-            else:
 
-                if len(measuredTheta) >= resolution: 
+            if key == 32: # spacebar to record origin
+                print("record origin")
+                origin = [markerID, currPix, currWorld, currTheta]
 
-                    relTheta, currTheta = avgFilter(measuredTheta, numFrames=resolution)
-                    currWorld = avgFilterNested(measuredWC, numFrames=resolution)
-                    currPix = avgFilterNested(measuredPixC, numFrames=resolution)
+            if key == 13: # enter to save frame
+                filename = os.path.join(savePath, f"img{i}.jpg")
+                cv2.imwrite(filename, undImg)
 
-                    measuredTheta = []
-                    measuredWC = []
-                    measuredPixC = []
-
-                elif len(measuredTheta) < resolution: 
-
-                    measuredTheta.append(theta)
-                    measuredWC.append(worldCoord)
-                    measuredPixC.append(pixCoord)
-
-                undImg = textPos(undImg, "Current Position:", (0,255,0), markerID, currWorld, currTheta, relTheta)
-
-
-        if key == 32: # spacebar to record origin
-            print("record origin")
-            origin = [markerID, currPix, currWorld, currTheta]
-
-        if key == 13: # enter to save frame
-            filename = os.path.join(savePath, f"img{i}.jpg")
-            cv2.imwrite(filename, undImg)
-
-            if origin is not None:
-            
-                nameData.append(i)
-                idData.append(markerID)
-                xData.append(diffWorld[0])
-                yData.append(diffWorld[1])
-                zData.append(diffWorld[2])
-                tData.append(diffTheta)  
-            else:
-                nameData.append(i)
-                idData.append(markerID)
-                xData.append(None)
-                yData.append(None)
-                zData.append(None)
-                tData.append(None)                     
-            i+=1 
-                        
-        if key == ord('c'): # press c to exit
-            positionData = PositionData(nameData, idData, xData, yData, zData, tData)
-        
-            return positionData
+                if origin is not None:
+                
+                    nameData.append(i)
+                    idData.append(markerID)
+                    xData.append(diffWorld[0])
+                    yData.append(diffWorld[1])
+                    zData.append(diffWorld[2])
+                    tData.append(diffTheta)  
+                else:
+                    nameData.append(i)
+                    idData.append(markerID)
+                    xData.append(None)
+                    yData.append(None)
+                    zData.append(None)
+                    tData.append(None)                     
+                i+=1 
+                            
+            if key == ord('c'): # press c to exit
+                positionData = PositionData(nameData, idData, xData, yData, zData, tData)        
+                return positionData
 
 
 
-        cv2.namedWindow('video feed', cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('video feed', w, h)
-        cv2.imshow('video feed', undImg)
-        
+            cv2.namedWindow('video feed', cv2.WINDOW_NORMAL)
+            cv2.resizeWindow('video feed', w, h)
+            cv2.imshow('video feed', undImg)
+    frameCount += 1
+
+   
 
 
 if __name__ == '__main__':
